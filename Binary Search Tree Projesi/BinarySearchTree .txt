@@ -1,0 +1,9 @@
+[7, 5, 1, 8, 3, 6, 0, 9, 4, 2] dizisinin Binary-Search-Tree aşamalarını yazınız.
+
+{
+
+    sağ taraf = {6 , 7 , 8 , 9}
+        root = 5;
+    sol taraf = {4 , 3 , 2 , 1 , 0}
+
+}
