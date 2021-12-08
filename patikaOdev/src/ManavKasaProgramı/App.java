@@ -21,5 +21,6 @@ public class App {
 
         double result = armut * 2.14 + elma * 3.67 + domates * 1.11 + muz * 0.95 + patlican * 5;
         System.out.println("Toplam Tutar : " + result + "₺");
+
     }
 }
