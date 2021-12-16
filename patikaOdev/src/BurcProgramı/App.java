@@ -4,108 +4,59 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Scanner inp = new Scanner(System.in);
-        int month, day ;
-        System.out.print("Doğduğunuz Ayı Giriniz : ");
-        month = inp.nextInt();
-        System.out.print("Doğduğunuz Günü Giriniz : ");
-        day = inp.nextInt();
+        int km;
+        int age;
+        int travelType;
+        double perKmPrice = 0.10;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Kac km ucacaksiniz?\t:");
+        km = scanner.nextInt();
+        System.out.print("Kac yasindasiniz?\t:");
+        age = scanner.nextInt();
+        System.out.println("Tek bilet icin 1'e basin, Gidis Donus icin 2'ye basin.\t");
+        travelType = scanner.nextInt();
+        int result = checkValues(km, age, travelType);
 
-        if(month==1){
-            if(day<22){
-                System.out.println("Oğlak");
+        if (result != 1) {
+            System.out.println("Yeniden deneyin.");
+        } else {
+            double normalTutar = km * perKmPrice;
+            System.out.println("Normal Tutar\t:" + normalTutar);
+            if (age < 12) {
+                normalTutar = normalTutar - (normalTutar * 0.50);
+                System.out.println("12'den kucuk indirimli fiyat\t:" + normalTutar);
+            } else if (age <= 24) {
+                normalTutar = normalTutar - (normalTutar * 0.10);
+                System.out.println("12 ile 24 yas arasi  indirimli fiyat\t:" + normalTutar);
+            } else if (age >= 65) {
+                normalTutar = normalTutar - (normalTutar * 0.30);
+                System.out.println("65 yas ustu indirimli fiyat\t:" + normalTutar);
+            } else {
+                System.out.println("Yas indirimi yapilamadi.");
             }
-            else{
-                System.out.println("Kova");
-            }
-        }
-        else if(month==2){
-            if(day<20){
-                System.out.println("Kova");
-            }
-            else{
-                System.out.println("Balık");
-            }
-        }
-        else if(month==3){
-            if(day<21){
-                System.out.println("Balık");
-            }
-            else{
-                System.out.println("Koç");
-            }
-        }
-        else if(month==4){
-            if(day<21){
-                System.out.println("Koç");
-            }
-            else{
-                System.out.println("Boğa");
+
+            if (travelType == 2) {
+                normalTutar = normalTutar - (normalTutar * 0.20);
+                normalTutar *= 2;
+                System.out.println("Gidis donus indirimli fiyat\t:" + normalTutar);
             }
         }
-        else if(month==5){
-            if(day<22){
-                System.out.println("Boğa");
-            }
-            else{
-                System.out.println("İkizler");
-            }
+
+    }
+
+    public static int checkValues(int km, int age, int travelType) {
+        if (km < 0) {
+            System.out.println("Hatali Deger Girdiniz.");
+            return 0;
         }
-        else if(month==6){
-            if(day<23){
-                System.out.println("İkizler");
-            }
-            else{
-                System.out.println("Yengec");
-            }
+        if (age < 0) {
+            System.out.println("Hatali Deger Girdiniz.");
+            return 0;
         }
-        else if(month==7){
-            if(day<23){
-                System.out.println("Yengec");
-            }
-            else{
-                System.out.println("Aslan");
-            }
+        if (travelType <= 0 || travelType >= 3) {
+            System.out.println("Hatali Deger Girdiniz.");
+            return 0;
         }
-        else if(month==8){
-            if(day<23){
-                System.out.println("Aslan");
-            }
-            else{
-                System.out.println("Başak");
-            }
-        }
-        else if(month==9){
-            if(day<23){
-                System.out.println("Başak");
-            }
-            else{
-                System.out.println("Terazi");
-            }
-        }
-        else if(month==10){
-            if(day<23){
-                System.out.println("Terazi");
-            }
-            else{
-                System.out.println("Akrep");
-            }
-        }
-        else if(month==11){
-            if(day<22){
-                System.out.println("Akrep");
-            }
-            else{
-                System.out.println("Yay");
-            }
-        }
-        else if(month==12){
-            if(day<22){
-                System.out.println("Yay");
-            }
-            else{
-                System.out.println("Oğlak");
-            }
-        }
+        return 1;
     }
 }
