@@ -31,4 +31,5 @@ public class App {
         System.out.println("Ekok : " + ekok);
 
     }
+    /*Alican bu deneme github pushudur*/
 }
